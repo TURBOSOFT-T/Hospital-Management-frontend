@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { CreateEmployeeComponent } from './create-employee/create-employee.component';
-import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
-import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
 import { UpdateDoctorComponent } from './update-doctor/update-doctor.component';
@@ -14,11 +11,7 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 
 const routes: Routes = [
-  {path: 'employees', component: EmployeeListComponent},
-  {path: 'create-employee', component: CreateEmployeeComponent},
-  {path: '', redirectTo: 'employees', pathMatch: 'full'},
-  {path: 'update-employee/:id', component: UpdateEmployeeComponent},
-  {path: 'employee-details/:id', component: EmployeeDetailsComponent},
+
   {path:'doctors', component: DoctorListComponent},
   {path:'create-doctor', component:CreateDoctorComponent},
   {path:'', redirectTo: 'doctors', pathMatch :'full'},

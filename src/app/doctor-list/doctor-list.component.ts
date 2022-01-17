@@ -10,8 +10,14 @@ import { DoctorService } from '../doctor.service';
 })
 export class DoctorListComponent implements OnInit {
 
-  doctors: Doctor[];
+ // doctors: Doctor[];
 message='';
+
+lastName='';
+// currentPatient: Patient[];
+ doctors: any;
+  currentIndex = -1;
+  currentDoctor = null;
   constructor(private doctorService: DoctorService,
     private router: Router) { }
 
@@ -47,5 +53,20 @@ message='';
       this.getDoctors();
     })
   }
+
+  searchTitle() {
+    this.currentDoctor = [];
+    this.currentIndex = -1;
+    this.doctorService.findByLastName(this.lastName)
+      .subscribe(
+        data => {
+          this.doctors = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
 
 }

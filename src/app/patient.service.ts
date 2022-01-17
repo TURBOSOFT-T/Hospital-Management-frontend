@@ -22,6 +22,7 @@ export class PatientService {
   getPatients(id: number): Observable<any> {
     return this.httpClient.get(`${this.baseURL}/${id}`);
   }
+
   getPatientById(id: number): Observable<Patient>{
     return this.httpClient.get<Patient>(`${this.baseURL}/${id}`);
   }
@@ -35,7 +36,7 @@ export class PatientService {
   deletePatient(id: number): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
-  findByLastName(lastName) {
+  findByLastName(lastName: any) {
     return this.httpClient.get(`${this.baseURL}?lastName=${lastName}`);
   }
 

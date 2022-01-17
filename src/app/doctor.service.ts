@@ -36,4 +36,7 @@ export class DoctorService {
   deleteDoctor(id: number): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+  findByLastName(lastName: any) {
+    return this.httpClient.get(`${this.baseURL}?lastName=${lastName}`);
+  }
 }

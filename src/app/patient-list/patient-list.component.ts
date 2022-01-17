@@ -10,15 +10,34 @@ import { PatientService } from '../patient.service';
 })
 export class PatientListComponent implements OnInit {
 
-  patients: Patient[];
+  //patients: Patient[];
+
 lastName='';
-patient: any;
+// currentPatient: Patient[];
+ patients: any;
+  currentIndex = -1;
+  currentPatient = null;
+
+  //patient: any;
   constructor(private patientService: PatientService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.getPatients();
+    //this.currentPatient = {};
+    this.retrievePatients();
+    this.currentIndex = -1;
   }
+  retrievePatients(): void {
+    throw new Error('Method not implemented.');
+
+  }
+  refreshList() {
+    this.retrievePatients();
+    this.currentPatient = null;
+    this.currentIndex = -1;
+  }
+
 
   private getPatients(){
     this.patientService.getPatientsList().subscribe(data => {
@@ -42,10 +61,12 @@ patient: any;
     })
   }
   searchTitle() {
+    this.currentPatient = [];
+    this.currentIndex = -1;
     this.patientService.findByLastName(this.lastName)
       .subscribe(
         data => {
-          this.patient = data;
+          this.patients = data;
           console.log(data);
         },
         error => {
